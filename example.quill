@@ -1,0 +1,67 @@
+% Note that the header is standard TeX
+\documentclass[11pt]{article}
+
+\title {Quill: \LaTeX for Authors}
+\author {Matt Conway}
+\date {\today}
+\usepackage {hyperref}
+
+% I recommend this to allow the use of letters like ä directly
+\usepackage[utf8]{inputenc}
+
+\begin {document}
+\maketitle
+
+Quill is a document preparation system that allows authors to typeset
+their work. It is a \LaTeX preprocessor which allows authors to use the
+power of \LaTeX without needing to concern themselves with syntax in
+all but the strangest cases.
+
+Many of its features work just like \LaTeX. For instance, paragraphs
+can be a single line or multiple lines, and are separated by a blank
+line. The document header is standard \LaTeX, and all standard \LaTeX
+commands can be used. There are also several other things you can
+do. Here is a syntax summary:
+
+\begin{tabular} { | p{3.5cm} | p{7cm} | p{2.5cm} | }
+\hline
+Bold (using \textbackslash{}textbf) & surround words with * & *Bold*
+\\ \hline
+Italic (using \textbackslash{}emph) & 
+surround words with \_ :noquill
+& _Italic_ \\ \hline
+
+Percent signs & One can type, e.g., 57% and not have  & \\
+& it turned into a comment, &
+32% \\
+& however, a \% not preceded by a number & \\
+& is still a comment & % a comment
+\\ \hline
+Dollar signs & Generally, Quill will figure out if you want a formula or not.
+If you are concerned, you can put whitespace after dollar signs to ensure that
+they are not converted. If you use formulae and dollar signs in the same line,
+Quill may become confused. Using the --no-dollar option turns all of this
+behavior off. &
+$500
+$10 \over 14$ \\ \hline
+
+Chapter headings & Three or more \# at the start of a line generates a new
+chapter heading. The section heading used is \textbackslash{}chapter or the
+heading specified by --chapter= (no backslash needed) & \\ \hline
+
+Quotes & Straight single (') and double (") quotes are made curly & 
+"double" 'single' \\ \hline
+
+Excluding Quill & If you don't want Quill to process a line, simply place 
+ :noquill at the end of that line (it can be in a comment or not, it will be
+removed from the final output). There may be no non-whitespace characters 
+after it. &
+$45 \over 10$450 Quill would mangle this very odd line. \\ \hline :noquill	
+
+Chapters & To start a new chapter, start a line with 3 or more \# signs, 
+followed by the name of the chapter. By default, this generates chapter 
+commands, however, passing in --chapter=section will generate section 
+commands, \&c. & \\ \hline
+ 
+\end{tabular}
+\end {document}
